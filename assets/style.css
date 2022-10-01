@@ -1,0 +1,82 @@
+hr {
+    border-top: 2px solid gray;
+}
+
+.plot-and-dropdown-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: auto;
+}
+
+.comparative-line-plot-container {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    gap: auto;
+}
+
+.dropdown-container {
+    display: grid;
+    width: 90%;
+    grid-template-rows: auto auto auto auto;
+    grid-gap: 5px;
+}
+
+.dropdown-button {
+    width: 100%;
+    margin-top: 5px;
+}
+
+.file-upload-button {
+    width: 100%;
+    margin-top: 5px;
+}
+
+.app-div {
+    padding: 10px;
+}
+
+.data-table-div {
+    width: 710px;
+    height: 100%;
+    margin: 5px 0px 5px 0px;
+    border-style: solid;
+    border-radius: 10px;
+}
+
+.title-and-ylabel-input {
+    width: 100%;
+    height: 35px;
+}
+
+.max-yval-input {
+    width: 100%;
+    height: 35px;
+}
+
+.radio-items[type="radio"] {
+    display: inline-block;
+    text-align: left;
+}
+
+.line-plot-and-datatable-container {
+    display: grid;
+    width: 90%;
+    grid-template-rows: auto auto;
+    grid-gap: 5px;
+}
+
+.line-plot {
+    border-style: solid;
+    border-radius: 10px;
+}
+
+.comparative-line-plot {
+    border-style: solid;
+    border-radius: 10px;
+}
+
+@media(max-width: 500px) {
+    .dropdown-container {
+        grid-template-columns: 1fr;
+    }
+}

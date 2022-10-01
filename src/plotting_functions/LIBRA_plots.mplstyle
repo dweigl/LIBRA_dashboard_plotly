@@ -1,0 +1,10 @@
+
+figure.figsize: 12, 6
+axes.titlesize: 16
+axes.labelsize: 14
+lines.linewidth: 2
+xtick.labelsize: 14
+ytick.labelsize: 14
+legend.fontsize: 14
+axes.xmargin: 0
+axes.ymargin: 0

@@ -1,0 +1,7 @@
+module,variable,array_vals,title,y_label,max_yval,decimal,is_exogenous_input
+Battery Market,share of demand met by recycling,"US, Co,",,Share,1,TRUE,FALSE
+Battery Market,share of demand met by recycling,"US, Ni,",,Share,1,TRUE,FALSE
+Battery Market,share of demand met by recycling,"US, Li,",,Share,1,TRUE,FALSE
+Battery Market,regional battery demand for mineral,"US, Co,",,Tonnes,,FALSE,FALSE
+Battery Market,regional battery demand for mineral,"US, Ni,",,Tonnes,,FALSE,FALSE
+Battery Market,regional battery demand for mineral,"US, Li,",,Tonnes,,FALSE,FALSE
