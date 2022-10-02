@@ -58,7 +58,9 @@ def render(app: Dash) -> html.Div:
             fig = make_comparative_lineplots(df, plot_params, style_params)
             return html.Div(
                 children=[
-                    html.Div(className="comparative-line-plot", children=[dcc.Graph(figure=fig)]),
+                    html.Div(
+                        className="comparative-line-plot", 
+                        children=[dcc.Graph(figure=fig)]),
                 ],
                 id=ids.COMPARATIVE_LINE_PLOT)
         except Exception as e:

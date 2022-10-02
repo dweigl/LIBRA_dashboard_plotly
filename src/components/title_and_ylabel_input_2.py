@@ -1,6 +1,5 @@
 from dash import Dash, dcc, html
 from dash.dependencies import Input, Output
-import dash_daq as daq
 
 from . import ids
 
@@ -51,12 +50,14 @@ def render(app: Dash) -> html.Div:
                 value='None',
                 className="title-and-ylabel-input"),
             html.H6("Maximum value for Y-axis."),
-            daq.NumericInput(
+            dcc.Input(
                 id=ids.MAX_YVAL_INPUT_TWO,
+                type="number",
                 min=0,
                 max=100_000_000_000,
+                step=0.01,
                 value=0,
-                size=300,
+                size="300",
                 className="max-yval-input"),
             html.H6("Decimal point for Y-axis labels?"),
             dcc.RadioItems(
