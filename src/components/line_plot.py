@@ -1,10 +1,12 @@
 from dash import Dash, dcc, html, dash_table
 from dash.dependencies import Input, Output, State
+from datetime import date
 from typing import Any
 from src.plotting_functions.plotting_functions_plotly import make_lineplot
 from src.plotting_functions.plot_parameters import LinePlotParameters, StyleParameters
 from . import ids
 import pandas as pd
+import re
 
 def render(app: Dash) -> html.Div:
     def make_selected_data(
@@ -31,6 +33,8 @@ def render(app: Dash) -> html.Div:
         Input(ids.MAX_YVAL_INPUT, "value"),
         Input(ids.DECIMAL_POINT_RADIOITEMS, "value"),
         Input(ids.EXOGENOUS_INPUT_RADIOITEMS, "value"),
+        Input(ids.SCENARIO_NAME_INPUT, "value"),
+        Input(ids.GITHUB_COMMIT_INPUT, "value"),
         State(ids.DATA_STORAGE, "data")
     )
     def update_line_plot(
@@ -45,11 +49,17 @@ def render(app: Dash) -> html.Div:
         max_yval: float,
         decimal: bool,
         is_exogenous_input: bool,
+        scenario_name: str,
+        github_commit: str,
         data: dict[Any],
     ) -> html.Div:
         placeholder_title = f"{module}.{variable}"+"["+ \
             ", ".join([val for val in [array_val_1, array_val_2, array_val_3] if val != "None"]) + "]"
         placeholder_ylabel = f"{module}.{variable}"
+
+        tag = None
+        if scenario_name and github_commit:
+            tag = f"{scenario_name}_{github_commit}_"+re.sub( "-", "", str(date.today()))
 
         try:
             plot_params = LinePlotParameters(
@@ -60,7 +70,8 @@ def render(app: Dash) -> html.Div:
                 y_label=placeholder_ylabel if y_label != placeholder_ylabel else y_label,
                 max_yval=max_yval if max_yval != 0 else None,
                 decimal=decimal,
-                is_exogenous_input=is_exogenous_input
+                is_exogenous_input=is_exogenous_input,
+                tag=tag if tag else None
             )
             df = pd.DataFrame.from_records(data, index="Years")
             style_params = StyleParameters(stella_run_names=stella_run_names, compare=False)
@@ -78,7 +89,14 @@ def render(app: Dash) -> html.Div:
                             columns=[{"name": str(i), "id": str(i)} for i in selected_data.columns],              
                             style_table={'overflowX': 'auto'})
                     ]),
-                    html.Div(children=[dcc.Graph(className="line-plot", figure=fig)]),
+                    html.Div(children=[
+                        dcc.Graph(
+                            className="line-plot", 
+                            figure=fig, 
+                            config=dict(
+                                toImageButtonOptions=dict(
+                                    format="png", width=800, height=700, scale=3.0)
+                            ))]),
                 ],
                 id=ids.LINE_PLOT)
         except Exception as e:

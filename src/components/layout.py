@@ -13,7 +13,8 @@ from src.components import (
     arrayval_dropdowns_2, 
     title_and_ylabel_input_2, 
     line_plot_2,
-    comparative_line_plot_2
+    comparative_line_plot_2,
+    tag_input
 )
 
 def create_layout(app: Dash) -> html.Div:
@@ -47,6 +48,7 @@ def create_layout(app: Dash) -> html.Div:
                     ),
                 ]
             ),
+            tag_input.render(app),
             html.H4("Plotted data.", style=dict(textAlign="center", fontWeight="bold")),
             html.Div(
                 className="plot-and-dropdown-container",

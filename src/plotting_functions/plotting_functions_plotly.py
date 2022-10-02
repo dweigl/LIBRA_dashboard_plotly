@@ -31,6 +31,10 @@ def make_lineplot(
                 x=np.arange(start_year, end_year+1),
                 y=df.loc[start_year:end_year+1, col],
                 mode="lines",
+                line=dict(
+                    color=style_parameters.colors[i],
+                    width=3
+                ),
                 name=style_parameters.stella_run_names[i]
             )
         )
@@ -57,19 +61,22 @@ def make_lineplot(
         yaxis=dict(
             showgrid=True,
             tickformat=".2f" if plot_parameters.decimal else "",
-            title=dict(standoff=5)
+            title=dict(standoff=5),
+            range=[0.0, np.max(df.loc[start_year:end_year+1, col_names].values)]
         ),
         legend_title_text=None,
         legend=dict(
             yanchor="bottom",
-            y=-0.40,
+            y=-0.35,
             xanchor="left",
             x=0.25
         )
     )
+    if plot_parameters.tag:
+        fig.add_annotation(
+                    x=1.1, y=-0.38, xref="paper", yref="paper", 
+                    text=plot_parameters.tag, showarrow=False, align="center")
 
-    fig.update_layout(yaxis=dict(range=[0.0, np.max(
-        df.loc[start_year:end_year+1, col_names].values)]))
     if plot_parameters.max_yval:
         fig.update_layout(yaxis=dict(range=[0.0, plot_parameters.max_yval]))
 
@@ -101,7 +108,7 @@ def make_comparative_lineplots(
                 x=np.arange(start_year, end_year+1),
                 y=df.loc[start_year:end_year+1, col],
                 mode="lines",
-                line=go.scatter.Line(color="black"),
+                line=go.scatter.Line(color="black", width=3),
                 name=style_parameters.stella_run_names[i]
             ),
             row=1, col=i+1
@@ -139,6 +146,10 @@ def make_comparative_lineplots(
             tickformat=".2f" if plot_parameters.decimal else ""),
         showlegend=False
     )
+    if plot_parameters.tag:
+        fig.add_annotation(
+                    x=1.0, y=-0.3, xref="paper", yref="paper", 
+                    text=plot_parameters.tag, showarrow=False, align="center")
     return fig
 
 def make_stackplot(df: pd.DataFrame,
@@ -209,6 +220,11 @@ def make_stackplot(df: pd.DataFrame,
             x=0.25
         )
     )
+    if plot_parameters.tag:
+        fig.add_annotation(
+                    x=1.0, y=-0.45, xref="paper", yref="paper", 
+                    text=plot_parameters.tag, showarrow=False, align="center")
+    
     return fig
 
 def make_stackplots_from_list(df: pd.DataFrame,

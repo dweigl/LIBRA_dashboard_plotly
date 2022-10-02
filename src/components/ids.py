@@ -45,3 +45,6 @@ EXOGENOUS_INPUT_RADIOITEMS_TWO = "exogenous-input-radioitems-two"
 
 DATATABLE = "datatable"
 DATATABLE_TWO = "datatable-two"
+
+SCENARIO_NAME_INPUT = "scenario-name-input"
+GITHUB_COMMIT_INPUT = "github-commit-input"

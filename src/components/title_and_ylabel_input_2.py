@@ -37,16 +37,21 @@ def render(app: Dash) -> html.Div:
         return f"{module}.{variable}" 
 
     return html.Div(
-        className="title-and-ylabel-input-box",
         children=[
-            html.H6("Line plot title."),
-            dcc.Textarea(
+            html.H6("Line plot title (Press Enter to submit)."),
+            dcc.Input(
                 id=ids.TITLE_INPUT_TWO,
+                type="text",
+                required=True,
+                debounce=True,
                 value='None',
                 className="title-and-ylabel-input"),
-            html.H6("Y-axis label."),
-            dcc.Textarea(
+            html.H6("Y-axis label (Press Enter to submit)."),
+            dcc.Input(
                 id=ids.YLABEL_INPUT_TWO,
+                type="text",
+                required=True,
+                debounce=True,
                 value='None',
                 className="title-and-ylabel-input"),
             html.H6("Maximum value for Y-axis."),
