@@ -71,6 +71,8 @@ hr {
 }
 
 .comparative-line-plot {
+    display: flex;
+    justify-content: center;
     border-style: solid;
     border-radius: 10px;
 }
