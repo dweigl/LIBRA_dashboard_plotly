@@ -28,7 +28,7 @@ exe = EXE(
     a.zipfiles,
     a.datas,
     [],
-    name='LIBRA-dashboard_0.0.1',
+    name='LIBRA-dashboard_0.0.2',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
