@@ -127,20 +127,25 @@ class StackPlotParameters(PlotParameters):
     Class for stack plot parameters.
     """
     _stack_variable_names: list[str] = field(init=False)
+    _stack_list: list[str] = field(init=False)
     __all: ClassVar[list] = []
 
     def __post_init__(self) -> None:
         self.module = self._initialize_module()
         self.array_vals = self._initialize_array_vals()
         self._validate_plot_params()
+        self._stack_list =  self._construct_stack_list()
         self._stack_variable_names = self._construct_stack_variable_names()
         StackPlotParameters.__all.append(self)
 
+    def _construct_stack_list(self) -> list[str]:
+        """Creates a list of array values to be plotted from the last array value supplied."""
+        return ArrayType.enumerate_array_type(
+            self.array_vals[-1].data_type)
+
     def _construct_stack_variable_names(self) -> list[str]:
         """Creates a list of variable names for stack plots."""
-        stack_list = ArrayType.enumerate_array_type(
-            self.array_vals[-1].data_type)
-        return [self._construct_full_variable_name(ArrayValue(stack)) for stack in stack_list]
+        return [self._construct_full_variable_name(ArrayValue(stack)) for stack in self._stack_list]
 
     @classmethod
     def instantiate_from_csv(cls):

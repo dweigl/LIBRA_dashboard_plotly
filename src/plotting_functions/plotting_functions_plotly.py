@@ -9,7 +9,6 @@ import textwrap
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-from .basedatatypes import ArrayType
 from .plot_parameters import LinePlotParameters, StackPlotParameters, StyleParameters
 
 def make_lineplot(
@@ -168,8 +167,6 @@ def make_stackplot(df: pd.DataFrame,
                         (247, 129, 191), (166, 86, 40), (152, 78, 163),
                         (153, 153, 153), (183, 18, 31), (222, 222, 0), (96, 15, 255)]
 
-    stack_list = ArrayType.enumerate_array_type(
-        plot_parameters.array_vals[-1].data_type)
     col_names = [
         f"{run_name}: {variable_name}" for variable_name in plot_parameters._stack_variable_names]
 
@@ -182,7 +179,7 @@ def make_stackplot(df: pd.DataFrame,
                 line=dict(width=0, color=CB_color_cycle_hex[i]),
                 fillcolor=f"rgba({CB_color_cycle_rgb[i][0]}, {CB_color_cycle_rgb[i][1]}, {CB_color_cycle_rgb[i][2]}, {alpha})" ,
                 stackgroup="one",
-                name=stack_list[i]
+                name=plot_parameters._stack_list[i]
             )
         )
     
