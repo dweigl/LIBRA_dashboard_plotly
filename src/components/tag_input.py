@@ -12,9 +12,9 @@ def render(app: Dash) -> html.Div:
     def update_submit_button(
         scenario_name: str,
         commit: str) -> bool:
-
-        if re.findall(r"[\w\_]+", scenario_name) and re.findall(r"\w+", commit):
-            return False
+        if scenario_name and commit:
+            if re.findall(r"[\w\_]+", scenario_name) and re.findall(r"\w+", commit):
+                return False
         return True
 
     return html.Div(
