@@ -21,10 +21,10 @@ def create_layout(app: Dash) -> html.Div:
     return html.Div(
         className="app-div", 
         children=[
-            html.H1(app.title, style=dict(textAlign="center", fontWeight="bold")),
+            html.H1(app.title, style=dict(textAlign="center", fontWeight="bold", color="#047cc4")),
             html.Hr(),
             file_uploader.render(app),
-            html.H4("Plotted data.", style=dict(textAlign="center", fontWeight="bold")),
+            html.H4("Plotted data.", style=dict(textAlign="center", fontWeight="bold", color="#047cc4")),
             html.Div(
                 className="plot-and-dropdown-container",
                 children=[
@@ -36,7 +36,7 @@ def create_layout(app: Dash) -> html.Div:
                 className="comparative-line-plot-header",
                 children=[
                     html.H4("Comparison across scenarios.",
-                    style=dict(fontWeight="bold")
+                    style=dict(fontWeight="bold", color="#047cc4")
                 )]
             ),
             html.Div(
@@ -51,7 +51,7 @@ def create_layout(app: Dash) -> html.Div:
                 className="LIBRA-variable-input-header",
                 children=[
                     html.H4("LIBRA variable inputs.",
-                    style=dict(fontWeight="bold")
+                    style=dict(fontWeight="bold", color="#047cc4")
                 )]
             ),
             html.Div(

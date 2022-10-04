@@ -31,7 +31,7 @@ def render(app: Dash) -> html.Div:
 
     return html.Div(
         children=[
-            html.H6("Select LIBRA run names.", style=dict(textAlign="center", fontWeight="bold")),
+            html.H6("Select LIBRA run names.", style=dict(textAlign="center", fontWeight="bold", color="#047cc4")),
             dcc.Dropdown(
                 id=ids.STELLA_RUN_NAMES_DROPDOWN,
                 options=[dict(label="None", value="None")],
