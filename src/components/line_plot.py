@@ -88,8 +88,9 @@ def render(app: Dash) -> html.Div:
                         dash_table.DataTable(
                             id=ids.DATATABLE,
                             data=selected_data.to_dict('records'), 
-                            columns=[{"name": str(i), "id": str(i)} for i in selected_data.columns],              
-                            style_table={'overflowX': 'auto'})
+                            columns=[dict(name=str(i), id=str(i)) for i in selected_data.columns],              
+                            style_table=dict(height="300px", overflowX='auto', overflowY='auto'),
+                            export_format="csv")
                     ]),
                     html.Div(children=[
                         dcc.Graph(
