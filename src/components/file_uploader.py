@@ -9,6 +9,22 @@ from typing import Any
 import pandas as pd
 
 def render(app: Dash) -> html.Div:
+
+    @app.callback(
+        Output(ids.FILE_UPLOAD_BUTTON, "disabled"),
+        Input(ids.FILE_UPLOADER, "contents")
+    )
+    def update_upload_button(contents: bytes) -> bool:
+        try:
+            df = preprocess_data(contents)
+            if not df.empty:
+                print(df.head())
+                return False
+            return True
+        except Exception as e:
+            print(e)
+            return True
+
     @app.callback(
         Output(ids.DATA_STORAGE, "data"),
         Input(ids.FILE_UPLOADER, "contents")
@@ -40,7 +56,8 @@ def render(app: Dash) -> html.Div:
                 borderStyle="dashed",
                 borderRadius="5px",
                 textAlign="center",
-                margin="10px"
+                margin="10px",
+                color="rgb(0,0,0)"
             )
         ),
         dcc.Store(
@@ -49,6 +66,7 @@ def render(app: Dash) -> html.Div:
             id=ids.FILE_UPLOAD_BUTTON,
             className="file-upload-button",
             children=["Upload"],
+            disabled=True,
             n_clicks=0
         )
     ])

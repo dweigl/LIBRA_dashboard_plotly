@@ -25,6 +25,7 @@ def render(app: Dash) -> html.Div:
         Input(ids.EXOGENOUS_INPUT_RADIOITEMS, "value"),
         Input(ids.SCENARIO_NAME_INPUT, "value"),
         Input(ids.GITHUB_COMMIT_INPUT, "value"),
+        Input(ids.TAG_INPUT_SUBMIT_BUTTON, "n_clicks"),
         State(ids.DATA_STORAGE, "data")
     )
     def update_line_plot(
@@ -41,6 +42,7 @@ def render(app: Dash) -> html.Div:
         is_exogenous_input: bool,
         scenario_name: str,
         github_commit: str,
+        n_clicks: int,
         data: dict[Any],
     ) -> html.Div:
         placeholder_title = f"{module}.{variable}"+"["+ \
@@ -48,7 +50,7 @@ def render(app: Dash) -> html.Div:
         placeholder_ylabel = f"{module}.{variable}"
 
         tag = None
-        if scenario_name and github_commit:
+        if n_clicks:
             tag = f"{scenario_name}_{github_commit}_"+re.sub("-", "", str(date.today()))
 
         try:
@@ -84,7 +86,9 @@ def render(app: Dash) -> html.Div:
                 ],
                 id=ids.COMPARATIVE_LINE_PLOT)
         except Exception as e:
-            print(e)
-            return html.Div([str(e)])
+            return html.Div(
+                className="comparative-line-plot",
+                children=[html.P(f"{placeholder_title} is not present in the uploaded data.")]
+            )
         
     return html.Div(id=ids.COMPARATIVE_LINE_PLOT)

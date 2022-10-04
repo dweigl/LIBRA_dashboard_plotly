@@ -24,7 +24,36 @@ def create_layout(app: Dash) -> html.Div:
             html.H1(app.title, style=dict(textAlign="center", fontWeight="bold")),
             html.Hr(),
             file_uploader.render(app),
+            html.H4("Plotted data.", style=dict(textAlign="center", fontWeight="bold")),
+            html.Div(
+                className="plot-and-dropdown-container",
+                children=[
+                    line_plot.render(app),
+                    line_plot_2.render(app)
+                ]
+            ),
+            html.Div(
+                className="comparative-line-plot-header",
+                children=[
+                    html.H4("Comparison across scenarios.",
+                    style=dict(fontWeight="bold")
+                )]
+            ),
+            html.Div(
+                className="comparative-line-plot-container",
+                children=[
+                    comparative_line_plot.render(app),
+                    comparative_line_plot_2.render(app)
+                ]
+            ),
             stella_run_names_dropdown.render(app),
+            html.Div(
+                className="LIBRA-variable-input-header",
+                children=[
+                    html.H4("LIBRA variable inputs.",
+                    style=dict(fontWeight="bold")
+                )]
+            ),
             html.Div(
                 className="plot-and-dropdown-container",
                 children=[
@@ -48,22 +77,6 @@ def create_layout(app: Dash) -> html.Div:
                     ),
                 ]
             ),
-            tag_input.render(app),
-            html.H4("Plotted data.", style=dict(textAlign="center", fontWeight="bold")),
-            html.Div(
-                className="plot-and-dropdown-container",
-                children=[
-                    line_plot.render(app),
-                    line_plot_2.render(app)
-                ]
-            ),
-            html.H4("Comparison across scenarios.", style=dict(textAlign="center", fontWeight="bold")),
-            html.Div(
-                className="comparative-line-plot-container",
-                children=[
-                    comparative_line_plot.render(app),
-                    comparative_line_plot_2.render(app)
-                ]
-            ),
+            tag_input.render(app)
         ]
     )

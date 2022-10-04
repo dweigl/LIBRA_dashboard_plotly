@@ -20,15 +20,14 @@ def render(app: Dash) -> html.Div:
         selected_data.reset_index(inplace=True)
         return selected_data
 
-
     @app.callback(
         Output(ids.LINE_PLOT_TWO, "children"),
         Input(ids.STELLA_RUN_NAMES_DROPDOWN, "value"),
         Input(ids.MODULE_DROPDOWN_TWO, "value"),
         Input(ids.VARIABLE_DROPDOWN_TWO, "value"),
         Input(ids.ARRAYVAL_DROPDOWN_TWO_1, "value"),
-        Input(ids.ARRAYVAL_DROPDOWN_2, "value"),
-        Input(ids.ARRAYVAL_DROPDOWN_3, "value"),
+        Input(ids.ARRAYVAL_DROPDOWN_TWO_2, "value"),
+        Input(ids.ARRAYVAL_DROPDOWN_TWO_3, "value"),
         Input(ids.TITLE_INPUT_TWO, "value"),
         Input(ids.YLABEL_INPUT_TWO, "value"),
         Input(ids.MAX_YVAL_INPUT_TWO, "value"),
@@ -36,6 +35,7 @@ def render(app: Dash) -> html.Div:
         Input(ids.EXOGENOUS_INPUT_RADIOITEMS_TWO, "value"),
         Input(ids.SCENARIO_NAME_INPUT, "value"),
         Input(ids.GITHUB_COMMIT_INPUT, "value"),
+        Input(ids.TAG_INPUT_SUBMIT_BUTTON, "n_clicks"),
         State(ids.DATA_STORAGE, "data")
     )
     def update_line_plot(
@@ -52,15 +52,17 @@ def render(app: Dash) -> html.Div:
         is_exogenous_input: bool,
         scenario_name: str,
         github_commit: str,
+        n_clicks: int,
         data: dict[Any]
     ) -> html.Div:
+
         placeholder_title = f"{module}.{variable}"+"["+ \
             ", ".join([val for val in [array_val_1, array_val_2, array_val_3] if val != "None"]) + "]"
         placeholder_ylabel = f"{module}.{variable}"
 
         tag = None
-        if scenario_name and github_commit:
-            tag = f"{scenario_name}_{github_commit}_"+re.sub("-", "", str(date.today()))
+        if n_clicks:
+            tag = f"{scenario_name}_{github_commit}_"+re.sub( "-", "", str(date.today()))
 
         try:
             plot_params = LinePlotParameters(
@@ -80,7 +82,6 @@ def render(app: Dash) -> html.Div:
             selected_data = make_selected_data(df, plot_params, style_params)
 
             fig = make_lineplot(df, plot_params, style_params)
-
             return html.Div(
                 className="line-plot-and-datatable-container",
                 children=[
@@ -88,13 +89,13 @@ def render(app: Dash) -> html.Div:
                         dash_table.DataTable(
                             id=ids.DATATABLE_TWO,
                             data=selected_data.to_dict('records'), 
-                            columns=[{"name": str(i), "id": str(i)} for i in selected_data.columns],    
-                            style_table={'overflowX': 'auto'}),
+                            columns=[{"name": str(i), "id": str(i)} for i in selected_data.columns],              
+                            style_table={'overflowX': 'auto'})
                     ]),
                     html.Div(children=[
                         dcc.Graph(
                             className="line-plot", 
-                            figure=fig,
+                            figure=fig, 
                             config=dict(
                                 toImageButtonOptions=dict(
                                     format="png", width=800, height=700, scale=3.0)
@@ -102,6 +103,9 @@ def render(app: Dash) -> html.Div:
                 ],
                 id=ids.LINE_PLOT_TWO)
         except Exception as e:
-            return html.Div([str(e)])
+            return html.Div([
+                html.Div(className="data-table-div", children=[html.P("Invalid data selection")]),
+                html.Div(className="line-plot", children=[html.P(f"{placeholder_title} is not present in the uploaded data")])
+            ])
         
     return html.Div(id=ids.LINE_PLOT_TWO)

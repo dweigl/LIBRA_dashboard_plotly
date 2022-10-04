@@ -2,6 +2,7 @@ hr {
     border-top: 2px solid gray;
 }
 
+
 .plot-and-dropdown-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -37,7 +38,7 @@ hr {
 
 .data-table-div {
     width: 710px;
-    height: 100%;
+    height: 200px;
     margin: 5px 0px 5px 0px;
     border-style: solid;
     border-radius: 10px;
@@ -46,33 +47,53 @@ hr {
 .title-and-ylabel-input {
     width: 100%;
     height: 35px;
+    margin-top: 5px;
 }
 
 .tag-input {
     width: 100%;
     height: 35px;
+    margin: 5px 0px 5px 0px;
 }
 
 .max-yval-input {
     width: 100%;
     height: 35px;
+    margin-top: 5px;
 }
 
-.radio-items[type="radio"] {
+.radio-items {
     display: inline-block;
     text-align: left;
+    margin: 5px 0px 5px 0px;
+}
+
+.radio-items-input [type="radio"] {
+    margin-left: 100px;
 }
 
 .line-plot-and-datatable-container {
     display: grid;
     width: 90%;
     grid-template-rows: auto auto;
-    grid-gap: 5px;
+    grid-gap: 0px;
 }
 
 .line-plot {
     border-style: solid;
     border-radius: 10px;
+    height: 700px;
+    margin-top: 5px;
+}
+
+.comparative-line-plot-header {
+    text-align: center;
+    margin: 5px 0px 5px 0px;
+}
+
+.LIBRA-variable-input-header {
+    text-align: center;
+    margin: 5px 0px 5px 0px;
 }
 
 .comparative-line-plot {
@@ -80,6 +101,14 @@ hr {
     justify-content: center;
     border-style: solid;
     border-radius: 10px;
+    height: 420px;
+    margin-top: 5px;
+}
+
+.tag-input-header {
+    text-align: center;
+    font-weight: bold;
+    margin: 10px 0px 5px 0px;
 }
 
 @media(max-width: 500px) {

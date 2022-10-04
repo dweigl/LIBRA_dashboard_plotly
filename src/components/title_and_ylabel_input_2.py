@@ -68,9 +68,10 @@ def render(app: Dash) -> html.Div:
             dcc.RadioItems(
                     id=ids.DECIMAL_POINT_RADIOITEMS_TWO,
                     className="radio-items",
+                    labelClassName="radio-items-input",
                     options=[
-                        dict(label="Yes\t\t\t\t\t\t.", value=True),
-                        dict(label="No\t\t\t\t\t\t.", value=False)
+                        dict(label="Yes", value=True),
+                        dict(label="No", value=False)
                     ],
                     inline=True,
                     value=False),
@@ -78,9 +79,10 @@ def render(app: Dash) -> html.Div:
             dcc.RadioItems(
                     id=ids.EXOGENOUS_INPUT_RADIOITEMS_TWO,
                     className="radio-items",
+                    labelClassName="radio-items-input",
                     options=[
-                        dict(label="Yes\t\t\t\t\t\t.", value=True),
-                        dict(label="No\t\t\t\t\t\t.", value=False)
+                        dict(label="Yes", value=True),
+                        dict(label="No", value=False)
                     ],
                     inline=True,
                     value=False)

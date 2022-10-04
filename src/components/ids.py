@@ -48,3 +48,4 @@ DATATABLE_TWO = "datatable-two"
 
 SCENARIO_NAME_INPUT = "scenario-name-input"
 GITHUB_COMMIT_INPUT = "github-commit-input"
+TAG_INPUT_SUBMIT_BUTTON = "tag-input-submit-button"
