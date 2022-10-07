@@ -1,4 +1,4 @@
-from dash import Dash, html
+from dash import Dash, html, dcc
 from src.components import (
     file_uploader,
     stella_run_names_dropdown,
@@ -24,59 +24,78 @@ def create_layout(app: Dash) -> html.Div:
             html.H1(app.title, style=dict(textAlign="center", fontWeight="bold", color="#047cc4")),
             html.Hr(),
             file_uploader.render(app),
-            html.H4("Plotted data.", style=dict(textAlign="center", fontWeight="bold", color="#047cc4")),
-            html.Div(
-                className="plot-and-dropdown-container",
-                children=[
-                    line_plot.render(app),
-                    line_plot_2.render(app)
-                ]
-            ),
-            html.Div(
-                className="comparative-line-plot-header",
-                children=[
-                    html.H4("Comparison across scenarios.",
-                    style=dict(fontWeight="bold", color="#047cc4")
-                )]
-            ),
-            html.Div(
-                className="comparative-line-plot-container",
-                children=[
-                    comparative_line_plot.render(app),
-                    comparative_line_plot_2.render(app)
-                ]
-            ),
-            stella_run_names_dropdown.render(app),
-            html.Div(
-                className="LIBRA-variable-input-header",
-                children=[
-                    html.H4("LIBRA variable inputs.",
-                    style=dict(fontWeight="bold", color="#047cc4")
-                )]
-            ),
-            html.Div(
-                className="plot-and-dropdown-container",
-                children=[
-                    html.Div(
-                        className="dropdown-container",
+            dcc.Tabs(
+                [
+                    dcc.Tab(
+                        label="Plotted data",
                         children=[
-                            module_dropdown.render(app),
-                            variable_dropdown.render(app),
-                            arrayval_dropdowns.render(app),
-                            title_and_ylabel_input.render(app)
-                        ]
-                    ),
-                    html.Div(
-                        className="dropdown-container",
+                                html.H4("Plotted data.", style=dict(textAlign="center", fontWeight="bold", color="#047cc4")),
+                                html.Div(
+                                    className="plot-and-dropdown-container",
+                                    children=[
+                                        line_plot.render(app),
+                                        line_plot_2.render(app)
+                                    ]
+                                ),
+                            ]   
+                        ),
+                    dcc.Tab(
+                        label="Comparative line plots",
                         children=[
-                            module_dropdown_2.render(app),
-                            variable_dropdown_2.render(app),
-                            arrayval_dropdowns_2.render(app),
-                            title_and_ylabel_input_2.render(app)
+                            html.Div(
+                                className="comparative-line-plot-header",
+                                children=[
+                                    html.H4("Comparison across scenarios.",
+                                    style=dict(fontWeight="bold", color="#047cc4")
+                                )]
+                            ),
+                            html.Div(
+                                className="comparative-line-plot-container",
+                                children=[
+                                        comparative_line_plot.render(app),
+                                        comparative_line_plot_2.render(app)
+                                    ]
+                                ),
+                            ]
+                        ),
+                    dcc.Tab(
+                        label="Plot settings",
+                        children=[
+                            stella_run_names_dropdown.render(app),
+                            html.Div(
+                                className="LIBRA-variable-input-header",
+                                children=[
+                                    html.H4("LIBRA variable inputs.",
+                                    style=dict(fontWeight="bold", color="#047cc4")
+                                )]
+                            ),
+                            html.Div(
+                                className="plot-and-dropdown-container",
+                                children=[
+                                    html.Div(
+                                        className="dropdown-container",
+                                        children=[
+                                            module_dropdown.render(app),
+                                            variable_dropdown.render(app),
+                                            arrayval_dropdowns.render(app),
+                                            title_and_ylabel_input.render(app)
+                                        ]
+                                    ),
+                                    html.Div(
+                                        className="dropdown-container",
+                                        children=[
+                                            module_dropdown_2.render(app),
+                                            variable_dropdown_2.render(app),
+                                            arrayval_dropdowns_2.render(app),
+                                            title_and_ylabel_input_2.render(app)
+                                        ]
+                                    ),
+                                ]
+                            ),
+                            tag_input.render(app)
                         ]
-                    ),
+                    )
                 ]
-            ),
-            tag_input.render(app)
+            )
         ]
     )
