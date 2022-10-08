@@ -49,3 +49,7 @@ DATATABLE_TWO = "datatable-two"
 SCENARIO_NAME_INPUT = "scenario-name-input"
 GITHUB_COMMIT_INPUT = "github-commit-input"
 TAG_INPUT_SUBMIT_BUTTON = "tag-input-submit-button"
+
+PLOTTED_DATA_TAB = "plotted-data-tab"
+COMPARATIVE_LINEPLOT_TAB = "comparative-lineplot-tab"
+PLOT_SETTINGS_TAB = "plot-settings-tab"

@@ -1,100 +1,25 @@
 from dash import Dash, html, dcc
 from src.components import (
+    comparative_line_plot_tab,
     file_uploader,
-    stella_run_names_dropdown,
-    module_dropdown,
-    variable_dropdown,
-    arrayval_dropdowns, 
-    title_and_ylabel_input, 
-    line_plot,
-    comparative_line_plot,
-    module_dropdown_2,
-    variable_dropdown_2,
-    arrayval_dropdowns_2, 
-    title_and_ylabel_input_2, 
-    line_plot_2,
-    comparative_line_plot_2,
-    tag_input
+    plot_settings_tab,
+    plotted_data_tab
 )
+
 
 def create_layout(app: Dash) -> html.Div:
     return html.Div(
-        className="app-div", 
+        className="app-div",
         children=[
-            html.H1(app.title, style=dict(textAlign="center", fontWeight="bold", color="#047cc4")),
+            html.H1(app.title, style=dict(textAlign="center",
+                    fontWeight="bold", color="#047cc4")),
             html.Hr(),
             file_uploader.render(app),
             dcc.Tabs(
                 [
-                    dcc.Tab(
-                        label="Plotted data",
-                        children=[
-                                html.H4("Plotted data.", style=dict(textAlign="center", fontWeight="bold", color="#047cc4")),
-                                html.Div(
-                                    className="plot-and-dropdown-container",
-                                    children=[
-                                        line_plot.render(app),
-                                        line_plot_2.render(app)
-                                    ]
-                                ),
-                            ]   
-                        ),
-                    dcc.Tab(
-                        label="Comparative line plots",
-                        children=[
-                            html.Div(
-                                className="comparative-line-plot-header",
-                                children=[
-                                    html.H4("Comparison across scenarios.",
-                                    style=dict(fontWeight="bold", color="#047cc4")
-                                )]
-                            ),
-                            html.Div(
-                                className="comparative-line-plot-container",
-                                children=[
-                                        comparative_line_plot.render(app),
-                                        comparative_line_plot_2.render(app)
-                                    ]
-                                ),
-                            ]
-                        ),
-                    dcc.Tab(
-                        label="Plot settings",
-                        children=[
-                            stella_run_names_dropdown.render(app),
-                            html.Div(
-                                className="LIBRA-variable-input-header",
-                                children=[
-                                    html.H4("LIBRA variable inputs.",
-                                    style=dict(fontWeight="bold", color="#047cc4")
-                                )]
-                            ),
-                            html.Div(
-                                className="plot-and-dropdown-container",
-                                children=[
-                                    html.Div(
-                                        className="dropdown-container",
-                                        children=[
-                                            module_dropdown.render(app),
-                                            variable_dropdown.render(app),
-                                            arrayval_dropdowns.render(app),
-                                            title_and_ylabel_input.render(app)
-                                        ]
-                                    ),
-                                    html.Div(
-                                        className="dropdown-container",
-                                        children=[
-                                            module_dropdown_2.render(app),
-                                            variable_dropdown_2.render(app),
-                                            arrayval_dropdowns_2.render(app),
-                                            title_and_ylabel_input_2.render(app)
-                                        ]
-                                    ),
-                                ]
-                            ),
-                            tag_input.render(app)
-                        ]
-                    )
+                    plotted_data_tab.render(app),
+                    comparative_line_plot_tab.render(app),
+                    plot_settings_tab.render(app)
                 ]
             )
         ]

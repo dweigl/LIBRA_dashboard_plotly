@@ -4,7 +4,7 @@ LIBRA variable base data types
 
 from dataclasses import dataclass, field
 from enum import Enum, unique
-from multiprocessing.dummy import Array
+
 
 class InvalidArrayTypeError(Exception):
     """Exception raised when user inputs an invalid LIBRA array type."""
@@ -12,11 +12,13 @@ class InvalidArrayTypeError(Exception):
     def __init__(self, msg):
         super().__init__(msg)
 
+
 class EmptyVariableError(Exception):
     """Exception raised when user does not input a variable name."""
 
     def __init__(self, msg):
         super().__init__(msg)
+
 
 @unique
 class Module(Enum):
@@ -105,17 +107,18 @@ class ArrayValue:
                 return ArrayType.BATTERY_CHEMISTRY
             case "Grid" | "storage_batt_type":
                 return ArrayType.STORAGE_BATT_TYPE
-            case "Price"| "Feedstock"| "FCI"| "Loan" | "ConversionPolicy":
+            case "Price" | "Feedstock" | "FCI" | "Loan" | "ConversionPolicy":
                 return ArrayType.CONVERSION_POLICY
-            case "ProcessYield" | "PSuccess" | "InputCap" | "CapitalCost" | "Risk" | "DebtFrac" |"techattribute":
+            case "ProcessYield" | "PSuccess" | "InputCap" | "CapitalCost" | "Risk" | "DebtFrac" | "techattribute":
                 return ArrayType.TECH_ATTRIBUTE
-            case "TrainRail"| "Road"| "transport":
+            case "TrainRail" | "Road" | "transport":
                 return ArrayType.TRANSPORT
-            case 'D&C1'|'D&C2'|'D&C3'|'Yr1'|'Yr2'|'Yr3'|'Yr4'|'Yr5'|'Yr6'|'Yr7'|'Yr8'|'Yr9'|'Yr10'|'Yr11'|'Yr12'|'Yr13'|'Yr14'|'Yr15'|'Yr16'|'Yr17'|'Yr18'|'Yr19'|'Yr20'|'Yr21'|'Yr22'|'Yr23'|'Yr24'|'Yr25'|'Yr26'|'Yr27'|'Yr28'|'Yr29'|'Yr30'|"ProjectYear":
+            case 'D&C1' | 'D&C2' | 'D&C3' | 'Yr1' | 'Yr2' | 'Yr3' | 'Yr4' | 'Yr5' | 'Yr6' | 'Yr7' | 'Yr8' | 'Yr9' | 'Yr10' | 'Yr11' | 'Yr12' | 'Yr13' | 'Yr14' | 'Yr15' | 'Yr16' | 'Yr17' | 'Yr18' | 'Yr19' | 'Yr20' | 'Yr21' | 'Yr22' | 'Yr23' | 'Yr24' | 'Yr25' | 'Yr26' | 'Yr27' | 'Yr28' | 'Yr29' | 'Yr30' | "ProjectYear":
                 return ArrayType.PROJECT_YEAR
             case _:
                 raise InvalidArrayTypeError(
                     f"{self.value} is not a valid LIBRA array variable.")
+
 
 @dataclass(kw_only=True, slots=True)
 class Variable:
@@ -135,13 +138,14 @@ class Variable:
         """
         if self.variable.isspace():
             raise EmptyVariableError("Variable name should be alphanumeric.")
-        
+
         self.module = self._initialize_module()
         self.array_vals = self._initialize_array_vals()
-  
+
         self._full_variable_name = self._construct_full_variable_name()
         if self.array_vals:
-            self._full_variable_name = self._construct_full_variable_name(self.array_vals[-1])
+            self._full_variable_name = self._construct_full_variable_name(
+                self.array_vals[-1])
 
     def _construct_full_variable_name(self, end_array_val: ArrayValue = None) -> str:
         """Construct full variable name from its parts."""
@@ -167,5 +171,3 @@ class Variable:
         if isinstance(self.array_vals, str):
             return [ArrayValue(array_val.strip()) for array_val in self.array_vals.split(",") if array_val != ""]
         return [ArrayValue(str(array_val).strip()) for array_val in self.array_vals if array_val != ""]
-
-    
