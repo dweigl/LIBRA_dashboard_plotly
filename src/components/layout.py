@@ -3,7 +3,8 @@ from src.components import (
     comparative_line_plot_tab,
     file_uploader,
     plot_settings_tab,
-    plotted_data_tab
+    plotted_data_tab,
+    instructions_tab
 )
 
 
@@ -19,7 +20,8 @@ def create_layout(app: Dash) -> html.Div:
                 [
                     plotted_data_tab.render(app),
                     comparative_line_plot_tab.render(app),
-                    plot_settings_tab.render(app)
+                    plot_settings_tab.render(app),
+                    instructions_tab.render(app)
                 ]
             )
         ]
