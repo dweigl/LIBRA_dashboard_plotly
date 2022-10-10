@@ -133,6 +133,14 @@ hr {
     color: #047cc4;
 }
 
+.instructions-container {
+    text-align: justify;
+    text-justify: inter-word;
+    color: #000000;
+    margin: 10px 10px 10px 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 @media(max-width: 500px) {
     .dropdown-container {
         grid-template-columns: 1fr;
