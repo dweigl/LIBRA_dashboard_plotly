@@ -8,7 +8,7 @@ a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[('./assets/*', 'assets'), ('./src/data/*', 'src/data'), ('./src/components/*', 'src/components'), ('./src/plotting_functions/*', 'src/plotting_functions'), ('./environment/*', 'environment')],
+    datas=[('./src/components/*', 'src/components'), ('./src/data/*', 'src/data'), ('./src/plotting_functions/*', 'src/plotting_functions'), ('./environment/*', 'environment'), ('./assets/*', 'assets')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -41,11 +41,5 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon="./assets/icon.ico"
-)
-app = BUNDLE(
-    exe,
-    name='LIBRA-dashboard_0.0.5',
-    icon=None,
-    bundle_identifier=None,
+    icon='assets/icons.ico',
 )
