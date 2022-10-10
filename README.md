@@ -3,7 +3,7 @@
 
 Currently, the dashboard requires the user to upload a CSV file containing outputs from LIBRA simulations in the vertical layout format. An example of the vertical layout format is given below:
 
-| Years   |	baseline: Minerals Market.time to die[ROW, LFP]	|baseline: Minerals Market.time to die[US, LFP] |
+| Years   |	baseline: Minerals Market.time to have fun[ROW, LFP]	|baseline: Minerals Market.time to have fun[US, LFP] |
 |---------|-------------------------------------------------|-----------------------------------------------|
 | 1998	   |1	                                               | -1                                            |
 | 1999	   |3.23716	                                         |-0.52619                                       |
