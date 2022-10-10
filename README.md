@@ -8,7 +8,6 @@ Currently, the dashboard requires the user to upload a CSV file containing outpu
 | 1998	   |1	                                               | -1                                            |
 | 1999	   |3.23716	                                         |-0.52619                                       |
 | 2000	   |-0.11721	                                        |0.22196                                        |
-|---------|-------------------------------------------------|-----------------------------------------------|
 
 To run the program, double click on the exe (or unix executable, for Mac OS users). You will first see a command prompt (or terminal) window open up, as shown below.
 ![image](https://user-images.githubusercontent.com/107583173/194936368-3e2183de-ef33-4bc6-a3b8-1ba8c56691c5.png)
