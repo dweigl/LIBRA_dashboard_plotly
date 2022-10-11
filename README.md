@@ -25,4 +25,12 @@ To visualize the results, just upload (or drag and drop) your CSV and click on "
 
 To exit the dashboard, close the browser tab and then close the command prompt (or terminal) that was first launched.
 
+### Dependencies
+
+numpy
+pandas
+plotly
+dash
+dash-bootstrap-components
+
 Please email any feedback, comments or questions to Debajyoti.Debnath@nrel.gov.
