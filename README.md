@@ -27,10 +27,12 @@ To exit the dashboard, close the browser tab and then close the command prompt (
 
 ### Dependencies
 
+```
 numpy
 pandas
 plotly
 dash
 dash-bootstrap-components
+```
 
 Please email any feedback, comments or questions to Debajyoti.Debnath@nrel.gov.
