@@ -2,43 +2,16 @@ name: dashboard-plotly
 channels:
   - defaults
 dependencies:
-  - bzip2=1.0.8
-  - ca-certificates=2022.07.19
-  - certifi=2022.9.14
-  - libffi=3.4.2
-  - openssl=1.1.1q
-  - pip=22.2.2
-  - python=3.10.4
-  - setuptools=63.4.1
-  - sqlite=3.39.3
-  - tk=8.6.12
-  - tzdata=2022c
-  - vc=14.2
-  - vs2015_runtime=14.27.29016
-  - wheel=0.37.1
-  - wincertstore=0.2
-  - xz=5.2.6
-  - zlib=1.2.12
+  - pip=22.2.2=py310hecd8cb5_0
+  - python=3.10.4=hdfd78df_0
+  - setuptools=63.4.1=py310hecd8cb5_0
+  - sqlite=3.39.3=h707629a_0
+  - wheel=0.37.1=pyhd3eb1b0_0
   - pip:
-    - brotli==1.0.9
-    - click==8.1.3
-    - colorama==0.4.5
     - dash==2.6.2
     - dash-bootstrap-components==1.2.1
-    - dash-core-components==2.0.0
-    - dash-html-components==2.0.0
     - dash-table==5.0.0
-    - flask==2.2.2
-    - flask-compress==1.13
-    - itsdangerous==2.1.2
-    - jinja2==3.1.2
-    - markupsafe==2.1.1
     - numpy==1.23.3
     - pandas==1.5.0
     - plotly==5.10.0
-    - python-dateutil==2.8.2
-    - pytz==2022.2.1
-    - six==1.16.0
-    - tenacity==8.1.0
-    - werkzeug==2.2.2
-prefix: C:\Users\debaj\anaconda3\envs\dashboard-plotly
+prefix: /Users/ddebnath/opt/anaconda3/envs/dashboard-plotly

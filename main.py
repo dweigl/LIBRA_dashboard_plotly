@@ -1,7 +1,7 @@
 """
 Plotly Dash based LIBRA dashboard
 """
-from dash import Dash, html
+from dash import Dash
 from dash_bootstrap_components import themes
 from src.components.layout import create_layout
 
