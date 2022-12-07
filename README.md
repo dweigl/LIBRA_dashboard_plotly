@@ -51,6 +51,6 @@ dash-bootstrap-components
 If using Anaconda 3 or Miniconda, navigate to the `environment` directory and execute the command
 `conda env create --file environment.yml`.
 
-If not using Anaconda, you can use `venv`. Navigate to the downloaded dashboard GitHub repo directory and execute `python -m venv .venv'.` Then, if on Windows, execute `.venv\Scripts\activate.bat` to activate the environment (`source .venv/bin/activate` if you are on MacOS or Linux). Finally, navigate to the `environment` directory and execute `pip install -r requirements.txt` to install all dependencies.
+If not using Anaconda, you can use `venv`. Navigate to the downloaded dashboard GitHub repo directory and execute `python -m venv .venv`. Then, if on Windows, execute `.venv\Scripts\activate.bat` to activate the environment (`source .venv/bin/activate` if you are on MacOS or Linux). Finally, navigate to the `environment` directory and execute `pip install -r requirements.txt` to install all dependencies.
 
 Please email any feedback, comments or questions to Dustin.Weigl@nrel.gov or Debajyoti.Debnath@nrel.gov.
