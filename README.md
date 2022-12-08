@@ -1,6 +1,6 @@
 # LIBRA_dashboard_plotly
 
-A simple dashboard to visualize outputs from LIBRA (Lithium-Ion Battery Resource Assessment Model, https://www.nrel.gov/transportation/libra.html) simulations, made using Plotly and Dash. To use, download the latest release from https://www.github.com/ddebnath-nrel/LIBRA_dashboard_plotly/releases.
+A simple dashboard to visualize outputs from LIBRA (Lithium-Ion Battery Resource Assessment Model, https://www.nrel.gov/transportation/libra.html) simulations, made using Plotly and Dash. To use, download the executable (LIBRA-dashboard_x.x.x.exe for Windows and LIBRA-dashboard_x.x.x for MacOS/ Linux users) from https://www.github.com/dweigl/LIBRA_dashboard_plotly/releases.
 
 Currently, the dashboard requires the user to upload a CSV file containing outputs from LIBRA simulations in the vertical layout format. An example of the vertical layout format is given below:
 
@@ -18,6 +18,7 @@ In Mac OS, download the executable (the file called LIBRA-dashboard_x.x.x, not t
 cd folder/where/you/downloaded/the/executable
 ./LIBRA-dashboard_x.x.x
 ```
+If running into errors with permissions while trying to run the executable, run the command `chmod +x ./LIBRA_dashboard_x.x.x` to modify the file permissions for the executable to add permission to run the executable to your user account.
 
 To view the dashboard, open a browser of your choice and navigate to the URL shown in the command prompt (in this case, http://127.0.0.1:8050). You will be able to see the dashboard.
 
